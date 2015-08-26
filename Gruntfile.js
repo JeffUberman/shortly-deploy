@@ -89,7 +89,7 @@ module.exports = function(grunt) {
         command: [
           'git status',
           'git add .',
-          'git commit -m "change"',
+          'git commit',
           'git push heroku master'
           ].join('&&')
         //can be used to auto-deploy to Heroku/Azure.
