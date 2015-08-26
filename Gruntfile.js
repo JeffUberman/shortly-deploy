@@ -7,17 +7,13 @@ module.exports = function(grunt) {
       client: {
         src: ['public/client/*.js'],
         dest: 'public/client/client.js'
-      },
-      publicLib: {
-        src: ['public/lib/*.js'],
-        dest: 'public/lib/libs.js'
       }
-      //your code here
     },
 
     mochaTest: {
       test: {
         options: {
+          bail: true,
           reporter: 'spec' //nyan, xunit, html-cov, dot, min, markdown
         },
         src: ['test/**/*.js']
@@ -35,22 +31,17 @@ module.exports = function(grunt) {
         files:{
           'public/dist/client.min.js' : ['public/client/client.js']
         }
-      },
-      libs: {
-        files:{
-          'public/dist/libs.min.js' : ['public/lib/libs.js']
-        }
-      },
+      }
     },
 
     jshint: {
       files: [
-      'public/client/client.js',
+      'public/client/*.js'
       //'public/lib/libs.js'
         // Add filespec list here
       ],
       options: {
-        force: 'true',
+        force: 'false',
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
@@ -92,6 +83,12 @@ module.exports = function(grunt) {
 
     shell: {
       prodServer: {
+        command: [
+          'git status',
+          'git add .',
+          'git commit -m "change"',
+          'git push heroku master'
+          ].join('&&')
         //can be used to auto-deploy to Heroku/Azure.
       }
     },
@@ -129,6 +126,7 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'jshint',
     'concat',
     'uglify',
     'cssmin'
@@ -148,6 +146,8 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('deploy', [
+    'build',
+    'shell'
     // add your deploy tasks here
   ]);
 

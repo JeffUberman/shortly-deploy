@@ -44,4 +44,5 @@ node_modules
 ### grunted ###
 public/client/
 public/style.css
+public/lib
 
