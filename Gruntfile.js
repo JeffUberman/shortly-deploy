@@ -2,7 +2,12 @@ module.exports = function(grunt) {
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+
     concat: {
+      dist: {
+        src: ['public/client/*.js'],
+        dest: 'public/client/client.js'
+      }
       //your code here
     },
 
@@ -22,11 +27,16 @@ module.exports = function(grunt) {
     },
 
     uglify: {
-      //your code here
+      clients: {
+        files:{
+          'public/dist/client.min.js' : ['public/client/client.js']
+        }
+      },
     },
 
     jshint: {
       files: [
+      'public/client/client.js'
         // Add filespec list here
       ],
       options: {
@@ -40,7 +50,11 @@ module.exports = function(grunt) {
     },
 
     cssmin: {
-      //your code here
+      style: {
+        files: {
+          'public/dist/style.min.css': 'public/style.css'
+        }
+      }
     },
 
     watch: {
@@ -59,7 +73,10 @@ module.exports = function(grunt) {
         tasks: ['cssmin']
       },
       server: {
-        //your code here
+        files: [
+          'server.js',
+          'server-config.js'
+        ]
       }
     },
 
@@ -102,8 +119,13 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build', [
+    'concat',
+    'uglify',
+    'cssmin'
     //your code here
   ]);
+
+  grunt.registerTask('default', ['test', 'build'])
 
   //can be used to auto-deploy.
   grunt.registerTask('upload', function(n) {

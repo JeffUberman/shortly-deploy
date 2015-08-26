@@ -6,6 +6,9 @@
   "repository": "",
   "license": "Proprietary",
   "private": true,
+  "scripts": {
+    "test": "mocha test/ServerSpec.js"
+  },
   "dependencies": {
     "knex": "~0.5.7",
     "bookshelf": "~0.6.4",
