@@ -82,6 +82,9 @@ module.exports = function(grunt) {
     },
 
     shell: {
+      options: {
+        stdout: true
+      },
       prodServer: {
         command: [
           'git status',
