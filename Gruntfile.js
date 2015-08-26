@@ -45,7 +45,8 @@ module.exports = function(grunt) {
 
     jshint: {
       files: [
-      'public/client/client.js'
+      'public/client/client.js',
+      //'public/lib/libs.js'
         // Add filespec list here
       ],
       options: {
@@ -53,7 +54,7 @@ module.exports = function(grunt) {
         jshintrc: '.jshintrc',
         ignores: [
           'public/lib/**/*.js',
-          'public/dist/**/*.js'
+          'public/dist/**/*.js',
         ]
       }
     },
