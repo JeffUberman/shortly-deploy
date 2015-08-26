@@ -98,9 +98,11 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'mochaTest'
+    //your code here
   ]);
 
   grunt.registerTask('build', [
+    //your code here
   ]);
 
   //can be used to auto-deploy.
