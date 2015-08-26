@@ -40,3 +40,7 @@ node_modules
 
 ### PhPStorm ###
 .idea/
+
+### grunted ###
+public/client/
+public/style.css
