@@ -4,9 +4,13 @@ module.exports = function(grunt) {
     pkg: grunt.file.readJSON('package.json'),
 
     concat: {
-      dist: {
+      client: {
         src: ['public/client/*.js'],
         dest: 'public/client/client.js'
+      },
+      publicLib: {
+        src: ['public/lib/*.js'],
+        dest: 'public/lib/libs.js'
       }
       //your code here
     },
@@ -30,6 +34,11 @@ module.exports = function(grunt) {
       clients: {
         files:{
           'public/dist/client.min.js' : ['public/client/client.js']
+        }
+      },
+      libs: {
+        files:{
+          'public/dist/libs.min.js' : ['public/lib/libs.js']
         }
       },
     },
